@@ -42,14 +42,13 @@ app.listen(PORT, function() {
 
 app.delete("/api/notes/:id", function(req, res) {
     let id = req.params.id;
-    for(let i = 0; i<notes.length; i ++){
+    for(let i = 0; i < notes.length; i++){
         if(notes[i].id == id){
-           let test = notes.splice(i, 1);
-            console.log(test);
-            console.log(notes[i]);
-            res.json("note " + notes[i].title + " deleted");
+            notes.splice(i, 1);
+            res.json("deleted");
         }
     }
+    fs.writeFileSync("db/db.json", notes, "utf-8");
 });
 
 app.get("*", function(req, res) {
