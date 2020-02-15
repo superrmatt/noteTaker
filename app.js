@@ -8,7 +8,7 @@ let PORT = process.env.PORT || 3000;
 let count = 0;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public/assets")));
 app.use(express.json());
 
 app.get("/", function(req, res) {
